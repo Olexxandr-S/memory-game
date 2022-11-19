@@ -3,12 +3,12 @@ import "./App.sass";
 import SingleCard from "./components/SingleCard";
 
 const cardImg = [
-  { src: "/img/helmet-1.png", matched: false },
-  { src: "/img/potion-1.png", matched: false },
-  { src: "/img/ring-1.png", matched: false },
-  { src: "/img/scroll-1.png", matched: false },
-  { src: "/img/shield-1.png", matched: false },
-  { src: "/img/sword-1.png", matched: false },
+  { src: "/images/football.png", matched: false },
+  { src: "/images/badminton.png", matched: false },
+  { src: "/images/baseball.png", matched: false },
+  { src: "/images/basketball.png", matched: false },
+  { src: "/images/rugby.png", matched: false },
+  { src: "/images/volleyball.png", matched: false },
 ];
 
 function App() {
@@ -83,7 +83,6 @@ function App() {
           />
         ))}
       </div>
-
     </div>
   );
 }

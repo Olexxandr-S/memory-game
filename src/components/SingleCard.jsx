@@ -13,7 +13,7 @@ function SingleCard({ card, handleChoice, flipped, disabled }) {
         <img className="front" src={card.src} alt="card" />
         <img
           className="back"
-          src="/img/cover.png"
+          src="/images/reload.png"
           onClick={handleClick}
           alt="cover"
         />
