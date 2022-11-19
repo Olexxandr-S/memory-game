@@ -1,8 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import "./App.sass";
+import Header from "./components/Header";
 import SingleCard from "./components/SingleCard";
+import { ThemeContext } from "./Context/ThemeContext";
 
-const cardImg = [
+const sportsImg = [
   { src: "/images/football.png", matched: false },
   { src: "/images/badminton.png", matched: false },
   { src: "/images/baseball.png", matched: false },
@@ -11,7 +13,21 @@ const cardImg = [
   { src: "/images/volleyball.png", matched: false },
 ];
 
+const animalsImg = [
+  { src: "/images/football.png", matched: false },
+  { src: "/images/badminton.png", matched: false },
+  { src: "/images/baseball.png", matched: false },
+  { src: "/images/basketball.png", matched: false },
+  { src: "/images/rugby.png", matched: false },
+  { src: "/images/volleyball.png", matched: false },
+  { src: "/images/baseball.png", matched: false },
+  { src: "/images/basketball.png", matched: false },
+  { src: "/images/rugby.png", matched: false },
+  { src: "/images/volleyball.png", matched: false },
+];
+
 function App() {
+  const { theme, setTheme } = useContext(ThemeContext);
   const [cards, setCards] = useState([]);
   const [choiceOne, setChoiceOne] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
@@ -19,7 +35,13 @@ function App() {
 
   //shuffle
   const shuffleCards = () => {
-    const shuffledCards = [...cardImg, ...cardImg]
+    let images;
+    if (theme === "sports") {
+      images = sportsImg;
+    } else {
+      images = animalsImg;
+    }
+    const shuffledCards = [...images, ...images]
       .sort(() => Math.random() - 0.5)
       .map((card) => ({ ...card, id: Math.random() }));
 
@@ -65,14 +87,13 @@ function App() {
   //start new game
   useEffect(() => {
     shuffleCards();
-  }, []);
+  }, [theme]);
 
   return (
     <div className="App">
-      <h1>Memory Game</h1>
-      <button onClick={shuffleCards}>New Game</button>
+      <Header shuffleCards={shuffleCards} setTheme={setTheme} />
 
-      <div className="card-grid">
+      <div className={theme === "sports" ? "sports-grid" : "animals-grid"}>
         {cards.map((card) => (
           <SingleCard
             key={card.id}
