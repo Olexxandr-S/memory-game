@@ -1,9 +1,9 @@
 import { createContext, useState } from "react";
 
-export const ThemeContext = createContext({ theme: "sports", undefined });
+export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState("sports");
+  const [theme, setTheme] = useState("");
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>

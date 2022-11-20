@@ -5,25 +5,53 @@ import SingleCard from "./components/SingleCard";
 import { ThemeContext } from "./Context/ThemeContext";
 
 const sportsImg = [
-  { src: "/images/football.png", matched: false },
-  { src: "/images/badminton.png", matched: false },
-  { src: "/images/baseball.png", matched: false },
-  { src: "/images/basketball.png", matched: false },
-  { src: "/images/rugby.png", matched: false },
-  { src: "/images/volleyball.png", matched: false },
+  { src: "/images/sports/football.png", matched: false },
+  { src: "/images/sports/badminton.png", matched: false },
+  { src: "/images/sports/baseball.png", matched: false },
+  { src: "/images/sports/basketball.png", matched: false },
+  { src: "/images/sports/rugby.png", matched: false },
+  { src: "/images/sports/volleyball.png", matched: false },
+];
+
+const earthImg = [
+  { src: "/images/earth/earth-day.png", matched: false },
+  { src: "/images/earth/earth.png", matched: false },
+  { src: "/images/earth/eco.png", matched: false },
+  { src: "/images/earth/green.png", matched: false },
+  { src: "/images/earth/honeycomb.png", matched: false },
+  { src: "/images/earth/landscape.png", matched: false },
+  { src: "/images/earth/lightbulb.png", matched: false },
+  { src: "/images/earth/planet.png", matched: false },
+  { src: "/images/earth/sea.png", matched: false },
+  { src: "/images/earth/trees.png", matched: false },
+];
+
+const musicImg = [
+  { src: "/images/music/drum.png", matched: false },
+  { src: "/images/music/electric-keyboard.png", matched: false },
+  { src: "/images/music/guitar.png", matched: false },
+  { src: "/images/music/maracas.png", matched: false },
+  { src: "/images/music/metronome.png", matched: false },
+  { src: "/images/music/sax.png", matched: false },
+  { src: "/images/music/treble-clef.png", matched: false },
+  { src: "/images/music/ukelele.png", matched: false },
+  { src: "/images/music/triangle.png", matched: false },
+  { src: "/images/music/violin.png", matched: false },
 ];
 
 const animalsImg = [
-  { src: "/images/football.png", matched: false },
-  { src: "/images/badminton.png", matched: false },
-  { src: "/images/baseball.png", matched: false },
-  { src: "/images/basketball.png", matched: false },
-  { src: "/images/rugby.png", matched: false },
-  { src: "/images/volleyball.png", matched: false },
-  { src: "/images/baseball.png", matched: false },
-  { src: "/images/basketball.png", matched: false },
-  { src: "/images/rugby.png", matched: false },
-  { src: "/images/volleyball.png", matched: false },
+  { src: "/images/animals/chameleon.png", matched: false },
+  { src: "/images/animals/elephant.png", matched: false },
+  { src: "/images/animals/fox.png", matched: false },
+  { src: "/images/animals/frog.png", matched: false },
+  { src: "/images/animals/giraffe.png", matched: false },
+  { src: "/images/animals/koala.png", matched: false },
+  { src: "/images/animals/panda-bear.png", matched: false },
+  { src: "/images/animals/penguin.png", matched: false },
+  { src: "/images/animals/snake.png", matched: false },
+  { src: "/images/animals/squirrel.png", matched: false },
+  { src: "/images/animals/turtle.png", matched: false },
+  { src: "/images/animals/whale.png", matched: false },
 ];
 
 function App() {
@@ -38,6 +66,10 @@ function App() {
     let images;
     if (theme === "sports") {
       images = sportsImg;
+    } else if (theme === "earth") {
+      images = earthImg;
+    } else if (theme === "music") {
+      images = musicImg;
     } else {
       images = animalsImg;
     }
@@ -92,18 +124,21 @@ function App() {
   return (
     <div className="App">
       <Header shuffleCards={shuffleCards} setTheme={setTheme} />
-
-      <div className={theme === "sports" ? "sports-grid" : "animals-grid"}>
-        {cards.map((card) => (
-          <SingleCard
-            key={card.id}
-            card={card}
-            handleChoice={handleChoice}
-            flipped={card === choiceOne || card === choiceTwo || card.matched}
-            disabled={disabled}
-          />
-        ))}
-      </div>
+      {!!theme ? (
+        <div className={`${theme}-grid`}>
+          {cards.map((card) => (
+            <SingleCard
+              key={card.id}
+              card={card}
+              handleChoice={handleChoice}
+              flipped={card === choiceOne || card === choiceTwo || card.matched}
+              disabled={disabled}
+            />
+          ))}
+        </div>
+      ) : (
+        <div>Choose game theme</div>
+      )}
     </div>
   );
 }

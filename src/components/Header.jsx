@@ -15,13 +15,27 @@ const Header = ({ shuffleCards, setTheme }) => {
       <button
         onClick={() => {
           shuffleCards();
+          setTheme("earth");
+        }}
+      >
+        Earth 5X4
+      </button>
+      <button
+        onClick={() => {
+          shuffleCards();
+          setTheme("music");
+        }}
+      >
+        Music 5X4
+      </button>
+      <button
+        onClick={() => {
+          shuffleCards();
           setTheme("animals");
         }}
       >
-        Animals 5X4
+        Animals 6X4
       </button>
-      <button onClick={shuffleCards}>New Game 5X4</button>
-      <button onClick={shuffleCards}>Game 6X4</button>
       <button onClick={shuffleCards}>New Game</button>
     </header>
   );
