@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import "./App.sass";
+import Footer from "./components/Footer";
 import Header from "./components/Header";
 import SingleCard from "./components/SingleCard";
 import { ThemeContext } from "./Context/ThemeContext";
@@ -140,6 +141,7 @@ function App() {
       ) : (
         <div className="home">Choose game theme</div>
       )}
+      <Footer theme={theme} />
     </div>
   );
 }

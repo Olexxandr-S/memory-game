@@ -1,0 +1,27 @@
+@mixin footer($color: #3977E4)
+    display: flex
+    align-items: center
+    justify-content: center
+    padding: 1.5rem
+    color: white
+    background: #121212
+    margin-top: auto
+    a
+        text-decoration: none
+        cursor: pointer
+        color: $color
+
+.footer
+    @include footer
+
+.footer-sports
+    @include footer($color: #85D4FF)
+
+.footer-earth
+    @include footer($color: #FFA700)
+
+.footer-music
+    @include footer($color: #D1362B)
+
+.footer-animals
+    @include footer($color: #913B7E)
