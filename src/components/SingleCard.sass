@@ -1,12 +1,26 @@
+@mixin img($color: #85D4FF)
+    width: 100%
+    display: block
+    padding: 2rem
+    border: 0.4rem solid $color
+    border-radius: 0.5rem
+
 .card
     position: relative
     width: 75%
-    img
-        width: 100%
-        display: block
-        padding: 2.5rem
-        border: 0.4rem solid #85D4FF
-        border-radius: 0.5rem
+    .image-sports
+        @include img
+    .image-earth
+        @include img($color: #77ff7777)
+        padding: 1.2rem
+        width: 90%
+    .image-music
+        @include img($color: #D1362B)
+        padding: 1.2rem
+        width: 90%
+    .image-animals
+        @include img($color: #913B7E)
+        padding: 1rem
     
     .front
         transform: rotateY(90deg)

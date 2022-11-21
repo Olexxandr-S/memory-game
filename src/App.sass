@@ -1,35 +1,47 @@
-.sports-grid
+@mixin grid($grid: 1fr 1fr 1fr 1fr) 
   max-width: 860px
   margin: 0 auto
   margin-top: 1rem
   display: grid
-  grid-template-columns: 1fr 1fr 1fr 1fr 
+  grid-template-columns: $grid 
   grid-gap: 1rem 0rem 
   justify-items: center
+
+@mixin App($background: #1b1535)
+  background: $background
+  display: flex
+  flex-direction: column
+  min-height: 100vh
+
+.home
+  @include App($background: #3977e4)
+  align-items: center
+  justify-content: center
+  color: #060c17
+  font-weight: bold
+  font-size: 1.5em
+  padding-bottom: 10rem
+
+.sports-grid
+  @include grid
 
 .earth-grid
-  max-width: 860px
-  margin: 0 auto
-  margin-top: 1rem
-  display: grid
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr
-  grid-gap: 1rem 0rem 
-  justify-items: center
+  @include grid($grid: 1fr 1fr 1fr 1fr 1fr)
 
 .music-grid
-  max-width: 860px
-  margin: 0 auto
-  margin-top: 1rem
-  display: grid
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr
-  grid-gap: 1rem 0rem 
-  justify-items: center
+  @include grid($grid: 1fr 1fr 1fr 1fr 1fr)
 
 .animals-grid
-  max-width: 860px
-  margin: 0 auto
-  margin-top: 1rem
-  display: grid
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr
-  grid-gap: 1rem 0rem 
-  justify-items: center
+  @include grid($grid: 1fr 1fr 1fr 1fr 1fr 1fr)
+  
+.App-sports
+  @include App($background: #1b1535)
+
+.App-earth
+  @include App($background: #163c1b)
+
+.App-music
+  @include App($background: #7d3e36)
+
+.App-animals
+  @include App($background: #322c49)

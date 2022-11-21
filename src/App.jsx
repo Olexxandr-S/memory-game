@@ -122,12 +122,13 @@ function App() {
   }, [theme]);
 
   return (
-    <div className="App">
-      <Header shuffleCards={shuffleCards} setTheme={setTheme} />
+    <div className={`App-${theme}`}>
+      <Header shuffleCards={shuffleCards} theme={theme} setTheme={setTheme} />
       {!!theme ? (
         <div className={`${theme}-grid`}>
           {cards.map((card) => (
             <SingleCard
+              theme={theme}
               key={card.id}
               card={card}
               handleChoice={handleChoice}
@@ -137,7 +138,7 @@ function App() {
           ))}
         </div>
       ) : (
-        <div>Choose game theme</div>
+        <div className="home">Choose game theme</div>
       )}
     </div>
   );

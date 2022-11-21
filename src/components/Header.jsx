@@ -1,8 +1,8 @@
 import "./Header.sass";
 
-const Header = ({ shuffleCards, setTheme }) => {
+const Header = ({ shuffleCards, setTheme, theme }) => {
   return (
-    <header>
+    <header className={!!theme ? theme : "header"}>
       <h1>Memory Game</h1>
       <button
         onClick={() => {

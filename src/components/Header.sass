@@ -1,25 +1,66 @@
-header
-    display: flex
-    justify-content: start
-    align-items: center
-    gap: 1.5rem
-    padding: 0.4rem 1rem
+$dark: #DA8DFC
+$light: #85D4FF
 
-h1
-    margin-right: 1rem
+@mixin header($background: #17305b)
+  background: $background
+  display: flex
+  justify-content: start
+  align-items: center
+  gap: 1.5rem
+  padding: 0.4rem 1rem
+  flex-wrap: wrap
 
-button
+@mixin h1($color: #c4d6f7)
+  color: $color
+  margin-right: 1rem
+
+@mixin button($color: #bdc8dc, $border: #224789)
   background: none
-  border: 0.2rem solid #85D4FF
+  border: 0.2rem solid $border
   padding: 0.4rem 0.8rem
   border-radius: 0.4rem
-  color: #DA8DFC
+  color: $color
   font-weight: bold
   cursor: pointer
   font-size: 1em
   transition: .2s all
   &:hover
-    background-color: #DA8DFC
-    color: #fff
-    box-shadow: 0rem 0.2rem 2.5rem #DA8DFC
-            
+    background-color: $color
+    border: 0.2rem solid #130f25
+    color: black
+    box-shadow: 0rem 0.2rem 2.5rem $color
+
+.header
+  @include header
+  h1
+    @include h1
+  button
+    @include button
+
+.sports
+  @include header($background: #130f25)
+  h1
+    @include h1($color: $light)
+  button
+    @include button($color: $dark, $border: $light)
+
+.earth
+  @include header($background: #142b14c9)
+  h1
+    @include h1($color: #77ff7777)
+  button
+    @include button($color: orange, $border: #77ff7777)
+
+.music
+  @include header($background: #321915)
+  h1
+    @include h1($color: #D1362B)
+  button
+    @include button($color: #F8A713, $border: #D1362B)
+
+.animals
+  @include header($background: #16112a)
+  h1
+    @include h1($color: #913B7E)
+  button
+    @include button($color: #C52B47, $border: #913B7E)
